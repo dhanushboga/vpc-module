@@ -171,3 +171,18 @@ resource "aws_route_table_association" "database" {
   subnet_id      = aws_subnet.database_subnet[count.index].id
   route_table_id = aws_route_table.database.id
 }
+
+
+# DB Subnet group for RDS
+resource "aws_db_subnet_group" "default" {
+  name       = local.resource_name
+  subnet_ids = aws_subnet.database_subnet[*].id
+
+  tags = merge(
+    var.common_tags,
+    var.db_subnet_group_tags,
+    {
+        Name = local.resource_name
+    }
+  )
+}

@@ -74,3 +74,16 @@ variable "database_subnet_cidr" {
     error_message = "Please provide atleast 2 database subnet cidr's"
   }
 }
+
+variable "is_peering_required" {
+  type = bool
+  default = "false"
+}
+
+variable "vpc_peering_tags" {
+  default = {}
+}
+
+variable "db_subnet_group_tags" {
+  default = {}
+}
