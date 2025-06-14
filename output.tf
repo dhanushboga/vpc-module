@@ -9,3 +9,7 @@
 # output "aws_route_table" {
 #     value = data.aws_route_table.main
 # }
+
+output "vpc_id" {
+  value = aws_vpc.main.id
+}
